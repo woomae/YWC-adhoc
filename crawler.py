@@ -26,7 +26,7 @@ def crawl():
 
     print(len(result))
     # Selenium 웹 드라이버 설정
-    webdriver_service = Service('../chromedriver.exe')  # 웹 드라이버 경로 설정
+    webdriver_service = Service('./chromedriver.exe')  # 웹 드라이버 경로 설정
     webdriver_options = Options()
     webdriver_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36')
     webdriver_options.add_argument('--headless')
@@ -35,6 +35,7 @@ def crawl():
     VALUES = ['//*[@id="_pcmap_list_scroll_container"]/ul/li[1]/div[1]/div/a[1]/div/div/span[1]',
         '//*[@id="app-root"]/div/div/div/div[5]/div/div[2]/div/div/div[1]/div/a/span[1]',
         ]
+    print('ready')
     # 크롤링 및 데이터 저장
     for row in result:
         name = row[0]
@@ -83,10 +84,9 @@ def crawl():
         mydb.commit()
 
     print(len(result))
-    print(mycursor.execute("SELECT COUNT(*) as row_count FROM stores where address is null"))
     # MySQL 연결 종료
     mycursor.close()
     mydb.close()
-
     print("크롤링이 완료되었습니다.")
+    return "success", 200
 
