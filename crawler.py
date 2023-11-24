@@ -26,7 +26,8 @@ def crawl():
 
     print(len(result))
     # Selenium 웹 드라이버 설정
-    webdriver_service = Service('./chromedriver.exe')  # 웹 드라이버 경로 설정
+    #webdriver_service = Service('./chromedriver.exe')  # 웹 드라이버 경로 설정 Window
+    webdriver_service = Service('/home/ec2-user/YWC-adhoc/chromedriver')  # 웹 드라이버 경로 설정 Linux
     webdriver_options = Options()
     webdriver_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36')
     webdriver_options.add_argument('--headless')
