@@ -1,3 +1,5 @@
+from collections import OrderedDict
+import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -89,5 +91,13 @@ def crawl():
     mycursor.close()
     mydb.close()
     print("크롤링이 완료되었습니다.")
-    return "success", 200
+    build_dict = OrderedDict([
+    ("code", 200),
+    ("message", "api.common.ok"),
+    ("result", {
+        "reply": "success",
+    })
+    ])
+    converte_json = json.dumps(build_dict, indent=2)
+    return converte_json
 

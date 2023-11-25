@@ -9,8 +9,8 @@ def chatbot():
     if request.method == 'GET':
         try:
             # 크롤링 및 데이터 저장
-            crawl()
-            return "success", 200
+            result = crawl()
+            return result
         except:
             return "fail", 500
         
